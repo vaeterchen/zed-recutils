@@ -1,25 +1,25 @@
-# GNU Recutils für Zed
+# GNU Recutils for Zed
 
-Die Extension erkennt `.rec`-Dateien als **GNU Recutils**. Sie hebt Feldnamen,
-Deskriptorfelder wie `%rec` und `%type`, Doppelpunkte, Werte, Kommentarzeilen und
-die beiden Arten von Zeilenfortsetzungen hervor. Die konkreten Farben hängen vom
-Zed-Theme ab. Werte bleiben Text. Die Extension prüft keine Recutils-Regeln wie
-`%type` oder `%key`.
+This extension recognizes `.rec` files as **GNU Recutils**. It highlights field
+names, descriptor fields such as `%rec` and `%type`, colons, values, comment
+lines, and both forms of line continuation. Colors depend on your Zed theme.
+Values are treated as text. The extension does not validate Recutils rules
+such as `%type` or `%key`.
 
-## Lokal installieren
+## Install locally
 
-1. Dieses Repository klonen.
-2. In Zed **zed: install dev extension** aufrufen und den geklonten
-   Ordner mit `extension.toml` auswählen. Zed lädt den im Manifest
-   referenzierten Grammatik-Commit und baut den Parser als WebAssembly.
-3. `examples/contacts.rec` öffnen. In der Statusleiste sollte
-   **GNU Recutils** erscheinen.
+1. Clone this repository.
+2. In Zed, run **zed: install dev extension** from the command palette and
+   select the cloned folder containing `extension.toml`. Zed fetches the
+   grammar revision specified in the manifest and builds the parser as
+   WebAssembly.
+3. Open `examples/contacts.rec`. The status bar should show **GNU Recutils**.
 
-## Parser neu erzeugen und testen
+## Regenerate and test the parser
 
-Für die Regenerierung werden Node.js (getestet mit 22) und Tree-sitter CLI
-**0.25.10** verwendet. Für die Tests brauchst du außerdem einen C-Compiler,
-da die CLI den Parser dafür als native Bibliothek baut.
+To regenerate the parser, use Node.js (tested with version 22) and Tree-sitter
+CLI **0.25.10**. The tests also require a C compiler because Tree-sitter
+builds the parser as a native library.
 
 ```sh
 cd tree-sitter-recutils
@@ -28,32 +28,32 @@ cd ..
 python3 test.py
 ```
 
-`test.py --tree-sitter /pfad/zur/tree-sitter` akzeptiert einen alternativen
-Pfad zur CLI. Für einen lokalen Grammatiktest mit Zed kann `python3 prepare.py`
-das Manifest auf einen lokalen Grammatik-Checkout umstellen.
+Use `test.py --tree-sitter /path/to/tree-sitter` to specify a different CLI
+location. To test grammar changes in Zed, run `python3 prepare.py` to point
+the manifest at a local grammar checkout.
 
-Die Korpustests prüfen Deskriptoren, wiederholte und leere Felder, Unicode-Werte,
-Kommentare und Zeilenfortsetzungen. Ein weiterer Test prüft die Bereiche der
-Original-Zed-Query, Windows-Zeilenenden, ein Dateiende ohne Zeilenumbruch und die
-Fehlererkennung bei einer alleinstehenden Fortsetzungszeile. Leerzeilen
-werden als Trennzeichen erkannt. Für die Hervorhebung liefert der Baum Felder
-und Kommentare in Dateireihenfolge.
+The corpus tests cover descriptors, repeated and empty fields, Unicode values,
+comments, and line continuations. The remaining tests verify the highlight
+ranges from Zed's query, Windows line endings, a file without a trailing
+newline, and error detection for a standalone continuation line. Blank lines
+are recognized as separators. The syntax tree provides fields and comments in
+file order for highlighting.
 
-## Projektdateien
+## Project files
 
-| Datei oder Ordner | Inhalt |
+| Path | Contents |
 | --- | --- |
-| `extension.toml` | Zed-Manifest mit der öffentlichen, auf einen Commit festgelegten Grammatik |
-| `languages/recutils/` | Dateizuordnung, Kommentarpräfix und Highlighting-Query |
-| `tree-sitter-recutils/grammar.js` | Tree-sitter-Grammatik |
-| `tree-sitter-recutils/src/` | Generierter C-Parser und Header |
-| `tree-sitter-recutils/test/corpus/` | Erwartete Syntaxbäume |
-| `prepare.py`, `test.py` | Lokale Installation vorbereiten und Tests ausführen |
-| `examples/contacts.rec` | Beispieldatenbank für Zed |
+| `extension.toml` | Zed manifest with the public grammar pinned to a commit |
+| `languages/recutils/` | File association, comment prefix, and highlight query |
+| `tree-sitter-recutils/grammar.js` | Tree-sitter grammar |
+| `tree-sitter-recutils/src/` | Generated C parser and headers |
+| `tree-sitter-recutils/test/corpus/` | Expected syntax trees |
+| `prepare.py`, `test.py` | Local installation setup and test runner |
+| `examples/contacts.rec` | Sample database for Zed |
 
-## Referenzen
+## References
 
-- [Zed: Language Extensions](https://zed.dev/docs/extensions/languages)
-- [Zed: Developing Extensions](https://zed.dev/docs/extensions/developing-extensions)
-- [Zed 1.28.1: Extension-Builder](https://github.com/zed-industries/zed/blob/v1.28.1/crates/extension/src/extension_builder.rs)
-- [GNU Recutils: The Rec Format](https://www.gnu.org/software/recutils/manual/html_node/The-Rec-Format.html)
+- [Zed Language Extensions](https://zed.dev/docs/extensions/languages)
+- [Developing Zed Extensions](https://zed.dev/docs/extensions/developing-extensions)
+- [Zed 1.28.1 Extension Builder](https://github.com/zed-industries/zed/blob/v1.28.1/crates/extension/src/extension_builder.rs)
+- [GNU Recutils Rec Format](https://www.gnu.org/software/recutils/manual/html_node/The-Rec-Format.html)

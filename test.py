@@ -54,13 +54,13 @@ def main():
             ("punctuation.delimiter", "6", "5", "6", "6"),
         ]
         if actual != expected:
-            raise SystemExit(f"Unerwartete Highlight-Bereiche:\n{output}")
+            raise SystemExit(f"Unexpected highlight ranges:\n{output}")
 
         sample.write_bytes(b"+ stray continuation\nOK: yes\n")
         result = run("parse", sample, capture_output=True)
         if result.returncode != 1 or "(ERROR" not in result.stdout:
-            raise SystemExit(f"Ein Syntaxfehler wurde erwartet:\n{result.stdout}")
-    print("Highlight-Bereiche, CRLF, Dateiende und Fehlererkennung: OK")
+            raise SystemExit(f"Expected a syntax error:\n{result.stdout}")
+    print("Highlight ranges, CRLF, end of file, and error detection: OK")
 
 
 if __name__ == "__main__":

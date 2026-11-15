@@ -17,7 +17,7 @@ def git(*arguments):
 
 def main():
     if not (GRAMMAR / "src" / "parser.c").is_file():
-        sys.exit("src/parser.c fehlt. Zuerst den Parser erzeugen (siehe README.md).")
+        sys.exit("src/parser.c is missing. Generate the parser first (see README.md).")
     if not (GRAMMAR / ".git").exists():
         git("init", "--quiet")
 
@@ -40,7 +40,7 @@ def main():
                            grammar_entry, flags=re.MULTILINE)
     grammar_entry = re.sub(r'^path = ".*"\n', "", grammar_entry, flags=re.MULTILINE)
     manifest.write_text(header + "[grammars.recutils]\n" + grammar_entry, encoding="utf-8")
-    print(f"Zed-Extension vorbereitet: {ROOT}")
+    print(f"Zed extension ready for local installation: {ROOT}")
 
 
 if __name__ == "__main__":

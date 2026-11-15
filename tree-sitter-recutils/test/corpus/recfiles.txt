@@ -30,7 +30,7 @@ A_2: x:y#z
 Both forms of continuation
 ==================
 
-Text: Straße \
+Text: Café \
 # still part of the value
 + second
 +
