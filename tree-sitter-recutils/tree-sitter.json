@@ -1,0 +1,16 @@
+{
+  "grammars": [
+    {
+      "name": "recutils",
+      "scope": "source.recutils",
+      "path": ".",
+      "file-types": ["rec"]
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "description": "GNU Recutils recfile grammar",
+    "authors": [{ "name": "Recutils extension contributors" }]
+  },
+  "bindings": {}
+}

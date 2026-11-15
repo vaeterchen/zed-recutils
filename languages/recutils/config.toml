@@ -1,0 +1,4 @@
+name = "GNU Recutils"
+grammar = "recutils"
+path_suffixes = ["rec"]
+line_comments = ["# "]

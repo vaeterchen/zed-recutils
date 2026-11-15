@@ -1,0 +1,11 @@
+id = "recutils"
+name = "GNU Recutils"
+version = "0.1.0"
+schema_version = 1
+authors = ["Recutils extension contributors"]
+description = "Syntax highlighting for GNU Recutils .rec databases."
+
+# prepare.py replaces the two placeholders with the local Git URI and commit.
+[grammars.recutils]
+repository = "file:///REPLACE_WITH_LOCAL_GRAMMAR"
+rev = "REPLACE_WITH_GRAMMAR_COMMIT"

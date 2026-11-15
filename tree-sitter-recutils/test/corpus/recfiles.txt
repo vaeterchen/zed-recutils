@@ -1,0 +1,62 @@
+==================
+Descriptors and repeated fields
+==================
+
+# header
+%rec: Contact
+%type: Age int
+
+Name: Ada
+# disabled: field
+Tag: A
+Tag: B
+Empty:
+A_2: x:y#z
+
+---
+
+(database
+  (comment)
+  (field name: (descriptor_name) value: (value (value_text)))
+  (field name: (descriptor_name) value: (value (value_text)))
+  (field name: (field_name) value: (value (value_text)))
+  (comment)
+  (field name: (field_name) value: (value (value_text)))
+  (field name: (field_name) value: (value (value_text)))
+  (field name: (field_name))
+  (field name: (field_name) value: (value (value_text))))
+
+==================
+Both forms of continuation
+==================
+
+Text: Straße \
+# still part of the value
++ second
++
++  fourth
+Path: C:\tmp
+
+---
+
+(database
+  (field
+    name: (field_name)
+    value: (value
+      (value_text)
+      (escaped_newline)
+      (value_text)
+      (continuation_marker)
+      (value_text)
+      (continuation_marker)
+      (continuation_marker)
+      (value_text)))
+  (field name: (field_name) value: (value (value_text) (value_text) (value_text))))
+
+==================
+Empty database
+==================
+
+---
+
+(database)

@@ -1,0 +1,18 @@
+# Kontakte
+%rec: Contact
+%key: Name
+%type: Age int
+
+Name: Ada Lovelace
+Age: 36
+Tag: Mathematik
+Tag: Programmierung
+Notes: Erste Zeile # gehört zum Wert
++ Zweite Zeile
++
++ Vierte Zeile über \
+zwei physische Zeilen.
+Empty:
+
+Name: Grace Hopper
+Age: 85

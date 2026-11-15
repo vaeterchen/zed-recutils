@@ -1,0 +1,5 @@
+/grammars/
+/tree-sitter-recutils/.git/
+/__pycache__/
+
+.DS_Store
