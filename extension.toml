@@ -5,7 +5,8 @@ schema_version = 1
 authors = ["Recutils extension contributors"]
 description = "Syntax highlighting for GNU Recutils .rec databases."
 
-# prepare.py replaces the two placeholders with the local Git URI and commit.
+repository = "https://github.com/vaeterchen/zed-recutils"
 [grammars.recutils]
-repository = "file:///REPLACE_WITH_LOCAL_GRAMMAR"
-rev = "REPLACE_WITH_GRAMMAR_COMMIT"
+repository = "https://github.com/vaeterchen/zed-recutils.git"
+rev = "7059c0ca317e79d320f5a1e8446b50f005844dd7"
+path = "tree-sitter-recutils"

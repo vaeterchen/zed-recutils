@@ -38,6 +38,7 @@ def main():
                            grammar_entry, flags=re.MULTILINE)
     grammar_entry = re.sub(r'^rev = ".*"$', f'rev = "{rev}"',
                            grammar_entry, flags=re.MULTILINE)
+    grammar_entry = re.sub(r'^path = ".*"\n', "", grammar_entry, flags=re.MULTILINE)
     manifest.write_text(header + "[grammars.recutils]\n" + grammar_entry, encoding="utf-8")
     print(f"Zed-Extension vorbereitet: {ROOT}")
 
